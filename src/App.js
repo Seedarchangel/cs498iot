@@ -2,23 +2,52 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+export class Dashboard extends React.Component {
+	constructor(props) {
+		super(props)
+        //child.push(<Option key={"first"}>first</Option>)
+		this.state = {
+            ledLightOn: "OFF",
+            distance: 0,
+		}
+	}
+
+  componentDidMount(){
+
+  }
+  
+  componentWillUnmount() {
+  }
+
+  showModal(value) {
+  }
+
+  render() {
+    return (
+    <div>
+       <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          The distance of the detected object is: 
+          {this.state.distance }
+          meters
+        </p>
+         <p>
+          Led lights are: 
+          {this.state.ledLightOn}
+        </p>
+      </header>
+ 
+  </div>
+    )
+  }
+}
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Dashboard>
+      </Dashboard>
     </div>
   );
 }
