@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 export class Dashboard extends React.Component {
 	constructor(props) {
@@ -10,13 +11,24 @@ export class Dashboard extends React.Component {
             ledLightOn: "OFF",
             distance: 0,
 		}
+    this.refreshDashboard = this.refreshDashboard.bind(this)
 	}
 
-  componentDidMount(){
 
+  
+  refreshDashboard() {
+    axios.get(`http://localhost:8080/api/dashboard`).then(res=>{
+                 this.setState({distance: res.data.distance, ledLightOn: res.data.led})
+                 //(<Option key={"first"}>first</Option>)
+            })
+    }
+
+  componentDidMount(){
+    this.interval = setInterval(() => this.refreshDashboard(), 5000);
   }
   
   componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   showModal(value) {

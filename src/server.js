@@ -27,9 +27,7 @@ app.get("/", function(req, res, next) {
 });
 
 app.get("/api/dashboard", function(req,res) {
-    fs.readFile(path.resolve(__dirname, "../TLEs/categories.json"), 'UTF-8', function (err, data){
-        return res.send({categories: data})
-    })
+    return res.send({led: "OFF", distance: (Math.random() * 100) + 1})
 })
 
 
