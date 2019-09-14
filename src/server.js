@@ -29,7 +29,6 @@ app.get("/", function(req, res, next) {
 
 
 
-var base64String = base64Encode('test.jpg');
 
 app.get("/api/dashboard", function(req,res) {
     var picFile = "~/pi/Documents/img.png"
