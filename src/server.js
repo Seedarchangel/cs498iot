@@ -26,8 +26,18 @@ app.get("/", function(req, res, next) {
     return res.send('pong');
 });
 
+
+
+
+var base64String = base64Encode('test.jpg');
+
 app.get("/api/dashboard", function(req,res) {
-    return res.send({led: "OFF", distance: (Math.random() * 100) + 1})
+    var picFile = "~/pi/Documents/img.png"
+    var body = fs.readFileSync(picFile);
+    var picStr = body.toString('base64');
+    var dataFile = "~/pi/Documents/dashboardinfo"
+    var bodyArr = fs.readFileSync(dataFile, 'utf-8').split(/\r?\n/)
+    return res.send({led: bodyArr[0], distance: bodyArr[1], pic: picStr})
 })
 
 

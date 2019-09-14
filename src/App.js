@@ -18,7 +18,7 @@ export class Dashboard extends React.Component {
   
   refreshDashboard() {
     axios.get(`http://localhost:8080/api/dashboard`).then(res=>{
-                 this.setState({distance: res.data.distance, ledLightOn: res.data.led})
+                 this.setState({distance: res.data.distance, ledLightOn: res.data.led, pic: res.data.pic})
                  //(<Option key={"first"}>first</Option>)
             })
     }
@@ -38,7 +38,7 @@ export class Dashboard extends React.Component {
     return (
     <div>
        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={`data:image/png;base64,${this.state.pic}`} />
         <p>
           The distance of the detected object is: 
           {this.state.distance }
