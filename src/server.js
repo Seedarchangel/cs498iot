@@ -31,10 +31,10 @@ app.get("/", function(req, res, next) {
 
 
 app.get("/api/dashboard", function(req,res) {
-    var picFile = "~/pi/Documents/img.png"
+    var picFile = "~/Documents/img.png"
     var body = fs.readFileSync(picFile);
     var picStr = body.toString('base64');
-    var dataFile = "~/pi/Documents/dashboardinfo"
+    var dataFile = "~/Documents/dashboardinfo"
     var bodyArr = fs.readFileSync(dataFile, 'utf-8').split(/\r?\n/)
     return res.send({led: bodyArr[0], distance: bodyArr[1], pic: picStr})
 })
