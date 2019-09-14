@@ -5,6 +5,7 @@ const https = require('https');
 var cors = require('cors');
 const fs = require('fs')
 const app = express();
+const resolve = require('path').resolve
 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -31,10 +32,10 @@ app.get("/", function(req, res, next) {
 
 
 app.get("/api/dashboard", function(req,res) {
-    var picFile = "~/Documents/img.png"
+    var picFile = "/home/pi/Documents/img.png"
     var body = fs.readFileSync(picFile);
     var picStr = body.toString('base64');
-    var dataFile = "~/Documents/dashboardinfo"
+    var dataFile = "/home/pi/Documents/dashboardinfo"
     var bodyArr = fs.readFileSync(dataFile, 'utf-8').split(/\r?\n/)
     return res.send({led: bodyArr[0], distance: bodyArr[1], pic: picStr})
 })
