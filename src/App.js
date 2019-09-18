@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
     }
 
   componentDidMount(){
-    this.interval = setInterval(() => this.refreshDashboard(), 5000);
+    this.interval = setInterval(() => this.refreshDashboard(), 1000);
   }
   
   componentWillUnmount() {
@@ -42,7 +42,7 @@ export class Dashboard extends React.Component {
         <p>
           The distance of the detected object is: 
           {this.state.distance }
-          meters
+          centimeters
         </p>
          <p>
           Led lights are: 

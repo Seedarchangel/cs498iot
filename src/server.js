@@ -32,12 +32,12 @@ app.get("/", function(req, res, next) {
 
 
 app.get("/api/dashboard", function(req,res) {
-    var picFile = "/home/pi/Documents/img.png"
+    var picFile = "../vans.png"
     var body = fs.readFileSync(picFile);
     var picStr = body.toString('base64');
-    var dataFile = "/home/pi/Documents/dashboardinfo"
+    var dataFile = "../data"
     var bodyArr = fs.readFileSync(dataFile, 'utf-8').split(/\r?\n/)
-    return res.send({led: bodyArr[0], distance: bodyArr[1], pic: picStr})
+    return res.send({led: bodyArr[1], distance: bodyArr[0], pic: picStr})
 })
 
 
